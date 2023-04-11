@@ -1,0 +1,45 @@
+<AlarmScreen>:
+    RelativeLayout:
+        Label:
+            text: "Alarm Time"
+            font_size: 32
+            pos_hint: {"center_x": 0.5, "top": 0.9}
+
+        TextInput:
+            id: hour_input
+            hint_text: "Hour (0-23)"
+            font_size: 24
+            size_hint: 0.2, None
+            pos_hint: {"center_x": 0.3, "top": 0.8}
+            input_filter: "int"
+            on_text_validate: min_input.focus = True
+
+        TextInput:
+            id: min_input
+            hint_text: "Minutes (0-59)"
+            font_size: 24
+            size_hint: 0.2, None
+            pos_hint: {"center_x": 0.7, "top": 0.8}
+            input_filter: "int"
+            on_text_validate: am_pm_input.focus = True
+
+        Spinner:
+            id: am_pm_input
+            text: "AM"
+            values: ["AM", "PM"]
+            font_size: 24
+            size_hint: 0.2, None
+            pos_hint: {"center_x": 0.5, "top": 0.7}
+
+        Button:
+            text: "Set Alarm"
+            font_size: 24
+            size_hint: 0.3, None
+            pos_hint: {"center_x": 0.5, "top": 0.5}
+            on_release: root.set_alarm()
+
+        Label:
+            id: alarm_label
+            text: ""
+            font_size: 24
+            pos_hint: {"center_x": 0.5, "top": 0.3}
